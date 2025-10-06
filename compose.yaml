@@ -10,6 +10,16 @@ services:
       - pgdb_pbru_it:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  backend:
+    image: springboot
+    container_name: be_container
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
   
 volumes:
     pgdb_pbru_it:
